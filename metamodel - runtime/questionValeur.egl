@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset ="URF-8">
+	<style>
+		body{
+			margin-top: 5%;
+    		margin-left: 5%;
+		}
+		h1,form {
+		    font-family: "Arial";
+		} 
+		input,button{
+		  	display: block;
+	        margin: 0;
+	        width: 10%;
+	        height: 25px;
+	        appearance: none;
+	        box-shadow: none;
+	        border-radius: none;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>[%=questionValeur.nom%]</h1>
+	<form>
+  		<input type="text" name="reponse" id="reponse"><br><br>
+  		<button type="button" name="btnReponse" value="Reponse" id="btnReponse">OK</button>
+	</form>
+</body>
+
+<script >
+	var button= document.getElementById('btnReponse');	
+	button.onclick= function(){
+    	var valeur= document.getElementById('reponse').value;    	
+    	if (valeur [%= questionValeur.reponseValeurInferieur.nom %]) {
+    		localStorage.setItem("questions", localStorage.getItem("questions")+"[%=questionValeur.nom%] : "+valeur+"<br>"); 
+    		location.href='[%=nettoyer(questionValeur.reponseValeurInferieur.etapeSuivante.id)%].html';
+		} else if (valeur [%= questionValeur.reponseValeurEgal.nom %]) {
+    		localStorage.setItem("questions", localStorage.getItem("questions")+"[%=questionValeur.nom%] : "+valeur+"<br>");
+    		location.href='[%=nettoyer(questionValeur.reponseValeurEgal.etapeSuivante.id)%].html';
+		}
+		else{
+			localStorage.setItem("questions", localStorage.getItem("questions")+"[%=questionValeur.nom%] : "+valeur+"<br>");
+			location.href='[%=nettoyer(questionValeur.reponseValeurSuperieur.etapeSuivante.id)%].html';
+		}    	
+	};	
+</script>
+</html>
+
+[%operation nettoyer(id: String):String{
+	return id.replace("@","").replace("/","").replace("\\.","");
+}
+%]

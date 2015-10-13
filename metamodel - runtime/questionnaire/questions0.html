@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset ="URF-8">
+	<style>
+		body{
+			margin-top: 5%;
+    		margin-left: 5%;
+		}
+		h1,p {
+		    font-family: "Arial";
+		} 
+		form { 
+			display: inline;
+			text-align: center;
+		    font-family: "Arial"; 
+		    float: center;
+		}
+		input,button{		  	
+	        width: 10%;
+	        height: 25px;
+	        appearance: none;
+	        box-shadow: none;
+	        border-radius: none;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Savez-vous cuisiner?</h1>
+	<div style="width:800px;">		
+		
+		<button type="button" name="btnReponseOui" id="btnReponseOui">Oui</button>		
+		<button type="button" name="btnReponseNon" id="btnReponseNon">Non</button>
+		
+	</div>	
+</body>
+
+<script type="text/javascript">   
+    
+    var button= document.getElementById('btnReponseOui');	
+	button.onclick= function(){
+        if (typeof(Storage) !== "undefined") {
+            localStorage.setItem("questions", localStorage.getItem("questions")+"Savez-vous cuisiner? : Oui<br>"); 
+            location.href='questions1.html';	
+        }        	
+	};
+    
+    var button= document.getElementById('btnReponseNon');	
+	button.onclick= function(){
+        if (typeof(Storage) !== "undefined") {
+            localStorage.setItem("questions", localStorage.getItem("questions")+"Savez-vous cuisiner? : Non<br>"); 
+            location.href='messages0.html';	
+        }        	
+	};    
+</script>    
+    
+</html>
+
+		

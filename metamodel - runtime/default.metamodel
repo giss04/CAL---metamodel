@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metamodel:Questionaire xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:metamodel="metamodel">
+  <questions xsi:type="metamodel:QuestionOuiNon" nom="Savez-vous cuisiner?" reponseNon="//@reponses.1" reponseOui="//@reponses.0"/>
+  <questions xsi:type="metamodel:QuestionValeur" nom="Combien des plats savez-vous cuisiner?" reponseValeurInferieur="//@reponses.2" reponseValeurEgal="//@reponses.3" reponseValeurSuperieur="//@reponses.4"/>
+  <questions xsi:type="metamodel:QuestionListe" nom="Quelle est votre type de cuisine préférée?" reponseListeA="//@reponses.5" reponseListeB="//@reponses.6" reponseListeC="//@reponses.7"/>
+  <reponses xsi:type="metamodel:ReponseOui" nom="Oui" etapeSuivante="//@questions.1"/>
+  <reponses xsi:type="metamodel:ReponseNon" nom="Non" etapeSuivante="//@messages.0"/>
+  <reponses xsi:type="metamodel:ReponseValeurInferieur" nom="&lt;5" etapeSuivante="//@messages.1"/>
+  <reponses xsi:type="metamodel:ReponseValeurEgal" nom="==5" etapeSuivante="//@messages.1"/>
+  <reponses xsi:type="metamodel:ReponseValeurSuperieur" nom=">5" etapeSuivante="//@questions.2"/>
+  <reponses xsi:type="metamodel:ReponseListeA" nom="Francaise" etapeSuivante="//@messages.2"/>
+  <reponses xsi:type="metamodel:ReponseListeB" nom="Italienne" etapeSuivante="//@messages.2"/>
+  <reponses xsi:type="metamodel:ReponseListeC" nom="Mexicaine" etapeSuivante="//@messages.2"/>
+  <messages nom="Merci d'avoir répondu à ce questionnaire."/>
+  <messages nom="Merci d'avoir répondu à ce questionnaire."/>
+  <messages nom="Merci d'avoir répondu à ce questionnaire."/>
+  <premierMessage nom="Bienvenue au questionnaire." premierQuestion="//@questions.0"/>
+</metamodel:Questionaire>

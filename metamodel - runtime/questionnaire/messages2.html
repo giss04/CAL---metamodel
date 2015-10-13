@@ -1,0 +1,38 @@
+<html>
+<head>
+	<META charset ="URF-8">
+	<style>
+		body{
+			margin-top: 5%;
+    		margin-left: 5%;
+		}
+		h1,form {
+			text-align: center;
+		    font-family: "Arial";
+		} 
+		h4,p,div{
+			font-family: "Arial";
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Merci d'avoir répondu à ce questionnaire.</h1>	
+	<form NAME="summary">
+		<INPUT TYPE="hidden" NAME="reponses" SIZE="35">
+	</form>
+	
+		<h4>Sommaire:</h4>
+		<p>
+			<div id="result"></div>
+		</p>
+</body>
+
+<script>
+	if (typeof(Storage) !== "undefined") {
+	    document.getElementById("result").innerHTML =   localStorage.getItem("questions");
+	} else {
+	    document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
+	}
+</script>
+</html>

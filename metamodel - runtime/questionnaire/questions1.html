@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset ="URF-8">
+	<style>
+		body{
+			margin-top: 5%;
+    		margin-left: 5%;
+		}
+		h1,form {
+		    font-family: "Arial";
+		} 
+		input,button{
+		  	display: block;
+	        margin: 0;
+	        width: 10%;
+	        height: 25px;
+	        appearance: none;
+	        box-shadow: none;
+	        border-radius: none;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Combien des plats savez-vous cuisiner?</h1>
+	<form>
+  		<input type="text" name="reponse" id="reponse"><br><br>
+  		<button type="button" name="btnReponse" value="Reponse" id="btnReponse">OK</button>
+	</form>
+</body>
+
+<script >
+	var button= document.getElementById('btnReponse');	
+	button.onclick= function(){
+    	var valeur= document.getElementById('reponse').value;    	
+    	if (valeur <5) {
+    		localStorage.setItem("questions", localStorage.getItem("questions")+"Combien des plats savez-vous cuisiner? : "+valeur+"<br>"); 
+    		location.href='messages1.html';
+		} else if (valeur ==5) {
+    		localStorage.setItem("questions", localStorage.getItem("questions")+"Combien des plats savez-vous cuisiner? : "+valeur+"<br>");
+    		location.href='messages1.html';
+		}
+		else{
+			localStorage.setItem("questions", localStorage.getItem("questions")+"Combien des plats savez-vous cuisiner? : "+valeur+"<br>");
+			location.href='questions2.html';
+		}    	
+	};	
+</script>
+</html>
+

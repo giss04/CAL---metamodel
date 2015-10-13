@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset ="URF-8">
+	<style>
+		body{
+			margin-top: 5%;
+    		margin-left: 5%;
+		}
+		h1,form {
+		    font-family: "Arial";		    
+		} 
+		input,button{
+		  	display: block;
+	        margin: 0;
+	        width: 10%;
+	        height: 25px;
+	        appearance: none;
+	        box-shadow: none;
+	        border-radius: none;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Quelle est votre type de cuisine préférée?</h1>			
+	<form>
+		<label for="A">Francaise</label>
+		<input type="radio" id="A" name="reponse" value="reponseListeA" checked="checked">		
+		<br>
+		<label for="B">Italienne</label>
+		<input type="radio" id="B" name="reponse" value="reponseListeB"> 
+		<br>
+		<label for="B">Mexicaine</label>
+		<input type="radio" id="C" name="reponse" value="reponseListeC">		
+		<br>
+		<br>
+		<button type="button" name="btnReponse" value="Reponse" id="btnReponse">OK</button>
+	</form>						
+</body>
+
+<script>
+	var button= document.getElementById('btnReponse');
+	
+	button.onclick= function(){
+		location.href='index.html';
+		if (document.getElementById('A').checked) {
+			localStorage.setItem("questions", localStorage.getItem("questions")+"Quelle est votre type de cuisine préférée? : Francaise<br>"); 
+  			location.href='messages2.html';
+		}
+		else if (document.getElementById('B').checked) {
+			localStorage.setItem("questions", localStorage.getItem("questions")+"Quelle est votre type de cuisine préférée? : Italienne<br>");
+  			location.href='messages2.html';
+		}
+		else{
+			localStorage.setItem("questions", localStorage.getItem("questions")+"Quelle est votre type de cuisine préférée? : Mexicaine<br>");
+  			location.href='messages2.html';
+		}			
+	};	  
+</script>
+</html>

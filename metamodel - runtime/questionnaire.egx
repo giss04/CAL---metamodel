@@ -1,0 +1,33 @@
+rule Start
+	transform start : MessageStart{
+		template : "start.egl"
+		target : "questionnaire/index.html"
+	}
+
+rule QuestionOuiNon
+	transform questionOuiNon : QuestionOuiNon{
+		template : "questionOuiNon.egl"
+		target : "questionnaire/"+nettoyer(questionOuiNon.id)+".html"
+	}	
+
+rule QuestionValeur
+	transform questionValeur : QuestionValeur{
+		template : "questionValeur.egl"
+		target : "questionnaire/"+nettoyer(questionValeur.id)+".html"
+	}
+
+rule QuestionListe
+	transform questionListe : QuestionListe{
+		template : "questionListe.egl"
+		target : "questionnaire/"+nettoyer(questionListe.id)+".html"
+	}
+
+rule Final
+	transform final : MessageFinal{
+		template : "final.egl"
+		target: "questionnaire/"+nettoyer(final.id)+".html"
+	}
+	
+operation nettoyer(id: String):String{
+	return id.replace("@","").replace("/","").replace("\\.","");
+}

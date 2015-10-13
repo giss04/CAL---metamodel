@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset ="URF-8">
+	<style>
+		body{
+			margin-top: 5%;
+    		margin-left: 5%;
+		}
+		h1,form {
+		    text-align: center;
+		    font-family: "Arial";
+		} 
+		input,button{		  	
+	        width: 10%;
+	        height: 35px;
+	        appearance: none;
+	        box-shadow: none;
+	        border-radius: none;
+		}
+	</style>
+</head>
+<body>
+	<h1>Bienvenue au questionnaire.</h1>
+	<form action="questions0.html">
+    	<input type="submit" value="Commencer">
+	</form>
+</body>
+
+<script>
+    if (typeof(Storage) !== "undefined") {
+        // Store
+        localStorage.setItem("questions", "");    
+    } else {
+        document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
+    }
+</script>
+</html>
+

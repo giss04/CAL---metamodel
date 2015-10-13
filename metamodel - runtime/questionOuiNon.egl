@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset ="URF-8">
+	<style>
+		body{
+			margin-top: 5%;
+    		margin-left: 5%;
+		}
+		h1,p {
+		    font-family: "Arial";
+		} 
+		form { 
+			display: inline;
+			text-align: center;
+		    font-family: "Arial"; 
+		    float: center;
+		}
+		input,button{		  	
+	        width: 10%;
+	        height: 25px;
+	        appearance: none;
+	        box-shadow: none;
+	        border-radius: none;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>[%=questionOuiNon.nom%]</h1>
+	<div style="width:800px;">		
+		
+		<button type="button" name="btnReponseOui" id="btnReponseOui">[%=nettoyer(questionOuiNon.reponseOui.nom)%]</button>		
+		<button type="button" name="btnReponseNon" id="btnReponseNon">[%=nettoyer(questionOuiNon.reponseNon.nom)%]</button>
+		
+	</div>	
+</body>
+
+<script type="text/javascript">   
+    
+    var button= document.getElementById('btnReponseOui');	
+	button.onclick= function(){
+        if (typeof(Storage) !== "undefined") {
+            localStorage.setItem("questions", localStorage.getItem("questions")+"[%=questionOuiNon.nom%] : [%=nettoyer(questionOuiNon.reponseOui.nom)%]<br>"); 
+            location.href='[%=nettoyer(questionOuiNon.reponseOui.etapeSuivante.id)%].html';	
+        }        	
+	};
+    
+    var button= document.getElementById('btnReponseNon');	
+	button.onclick= function(){
+        if (typeof(Storage) !== "undefined") {
+            localStorage.setItem("questions", localStorage.getItem("questions")+"[%=questionOuiNon.nom%] : [%=nettoyer(questionOuiNon.reponseNon.nom)%]<br>"); 
+            location.href='[%=nettoyer(questionOuiNon.reponseNon.etapeSuivante.id) %].html';	
+        }        	
+	};    
+</script>    
+    
+</html>
+
+		
+[%operation nettoyer(id: String):String{
+	return id.replace("@","").replace("/","").replace("\\.","");	
+}
+%]

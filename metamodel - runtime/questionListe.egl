@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset ="URF-8">
+	<style>
+		body{
+			margin-top: 5%;
+    		margin-left: 5%;
+		}
+		h1,form {
+		    font-family: "Arial";		    
+		} 
+		input,button{
+		  	display: block;
+	        margin: 0;
+	        width: 10%;
+	        height: 25px;
+	        appearance: none;
+	        box-shadow: none;
+	        border-radius: none;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>[%=questionListe.nom%]</h1>			
+	<form>
+		<label for="A">[%=questionListe.reponseListeA.nom%]</label>
+		<input type="radio" id="A" name="reponse" value="reponseListeA" checked="checked">		
+		<br>
+		<label for="B">[%=questionListe.reponseListeB.nom%]</label>
+		<input type="radio" id="B" name="reponse" value="reponseListeB"> 
+		<br>
+		<label for="B">[%=questionListe.reponseListeC.nom%]</label>
+		<input type="radio" id="C" name="reponse" value="reponseListeC">		
+		<br>
+		<br>
+		<button type="button" name="btnReponse" value="Reponse" id="btnReponse">OK</button>
+	</form>						
+</body>
+
+<script>
+	var button= document.getElementById('btnReponse');
+	
+	button.onclick= function(){
+		location.href='index.html';
+		if (document.getElementById('A').checked) {
+			localStorage.setItem("questions", localStorage.getItem("questions")+"[%=questionListe.nom%] : [%=questionListe.reponseListeA.nom%]<br>"); 
+  			location.href='[%=nettoyer(questionListe.reponseListeA.etapeSuivante.id)%].html';
+		}
+		else if (document.getElementById('B').checked) {
+			localStorage.setItem("questions", localStorage.getItem("questions")+"[%=questionListe.nom%] : [%=questionListe.reponseListeB.nom%]<br>");
+  			location.href='[%=nettoyer(questionListe.reponseListeB.etapeSuivante.id)%].html';
+		}
+		else{
+			localStorage.setItem("questions", localStorage.getItem("questions")+"[%=questionListe.nom%] : [%=questionListe.reponseListeC.nom%]<br>");
+  			location.href='[%=nettoyer(questionListe.reponseListeC.etapeSuivante.id)%].html';
+		}			
+	};	  
+</script>
+</html>
+[%operation nettoyer(id: String):String{
+	return id.replace("@","").replace("/","").replace("\\.","");
+}%]
